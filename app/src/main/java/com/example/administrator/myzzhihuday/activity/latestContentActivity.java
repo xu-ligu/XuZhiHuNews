@@ -143,24 +143,7 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
             }
         };
 
-        new Thread(new Runnable() {
-            @Override
-            public void run() {
-                boolean is=true;
-                while (is){
-                    if(mRevealBackground.getState() == RevealBackgroundView.STATE_FINISHED){
-                        Message msg=new Message();
-                        msg.what=23;
-                        handler.sendMessage(msg);
-                        is=false;
-                    }
-                }
-            }
-        }).start();
-            if (mRevealBackground.getState() == RevealBackgroundView.STATE_FINISHED) {
 
-
-        }
 
     }
     public void setUpRevealBackground(Bundle savedInstanceState){
@@ -184,10 +167,20 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
     @Override
     public void onStateChange(int state) {
         if(RevealBackgroundView.STATE_FINISHED==state){
+
             mAppBarLayout.setVisibility(View.VISIBLE);
             setStatusBarColor(Color.TRANSPARENT);
+            new Thread(new Runnable() {
+                @Override
+                public void run() {
+                    Message msg=new Message();
+                    msg.what=23;
+                    handler.sendMessage(msg);
+                }
+            }).start();
 
         }
+
     }
     @Override
     public void onBackPressed() {

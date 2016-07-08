@@ -79,6 +79,7 @@ public class RevealBackgroundView extends View {
             @Override
             public void onAnimationEnd(Animator animation) {
                 changeState(STATE_FINISHED);
+
             }
         });
         revealAnimator.start();
@@ -125,4 +126,5 @@ public class RevealBackgroundView extends View {
     public int getState(){
         return  state;
     }
+
 }
