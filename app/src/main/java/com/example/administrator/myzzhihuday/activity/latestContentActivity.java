@@ -6,12 +6,12 @@ import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Message;
 import android.support.design.widget.AppBarLayout;
 import android.support.design.widget.CollapsingToolbarLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.util.Log;
-import android.view.DragEvent;
 import android.view.View;
 import android.view.ViewTreeObserver;
 import android.view.Window;
@@ -39,7 +39,7 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class latestContentActivity extends AppCompatActivity implements RevealBackgroundView.OnStateChangeListener{
-    private ImageLoader mImageLoader;
+
     private StoriesEntity entity;
     private WebView webView;
     private ImageView iv;
@@ -49,6 +49,7 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
     private Content content;
     private WebCacheDatabase dbHelper;
     private boolean isLight;
+    private Handler handler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -79,7 +80,7 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
         webView.getSettings().setCacheMode(WebSettings.LOAD_CACHE_ELSE_NETWORK);
         webView.getSettings().setDomStorageEnabled(true);
         webView.getSettings().setDatabaseEnabled(true);
-        webView.getSettings().setAppCacheEnabled(true);
+        webView.setBackgroundColor(Color.TRANSPARENT);
         if(HttpUtils.isNetWorkConnected(this)){
             HttpUtils.get(Constant.CONTENT + entity.getId(), new TextHttpResponseHandler() {
                 @Override
@@ -113,6 +114,8 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
         }
         setUpRevealBackground(savedInstanceState);
         setStatusBarColor(getResources().getColor(isLight ? R.color.light_toolbar : R.color.dark_toolbar));
+
+
     }
     public void parseJson(String responseString){
         Gson gson = new Gson();
@@ -128,10 +131,37 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
         String css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/news.css\" type=\"text/css\">";
         String html = "<html><head>" + css + "</head><body>" + content.getBody() + "</body></html>";
         html = html.replace("<div class=\"img-place-holder\">", "");
-Log.d("23",content.getBody());
-        Log.d("23", html);
+        final String finalHtml = html;
+        handler=new Handler(){
+            @Override
+            public void handleMessage(Message msg) {
+                if(msg.what==23){
+                    webView.loadDataWithBaseURL("x-data://base", finalHtml, "text/html", "UTF-8", null);
+                }
 
-        webView.loadDataWithBaseURL("x-data://base", html, "text/html", "UTF-8", null);
+                super.handleMessage(msg);
+            }
+        };
+
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                boolean is=true;
+                while (is){
+                    if(mRevealBackground.getState() == RevealBackgroundView.STATE_FINISHED){
+                        Message msg=new Message();
+                        msg.what=23;
+                        handler.sendMessage(msg);
+                        is=false;
+                    }
+                }
+            }
+        }).start();
+            if (mRevealBackground.getState() == RevealBackgroundView.STATE_FINISHED) {
+
+
+        }
+
     }
     public void setUpRevealBackground(Bundle savedInstanceState){
         mRevealBackground.setOnStateChangeListener(this);

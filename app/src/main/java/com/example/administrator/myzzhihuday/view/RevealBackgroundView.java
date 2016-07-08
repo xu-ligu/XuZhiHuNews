@@ -33,6 +33,7 @@ public class RevealBackgroundView extends View {
 
     private int startLocationX;
     private int startLocationY;
+    public static  boolean isGo=false;
 
 
     private OnStateChangeListener onStateChangeListener;
@@ -92,6 +93,7 @@ public class RevealBackgroundView extends View {
     protected void onDraw(Canvas canvas) {
         if (state == STATE_FINISHED) {
             canvas.drawRect(0, 0, getWidth(), getHeight(), fillPaint);
+            isGo=true;
         } else {
             canvas.drawCircle(startLocationX, startLocationY, currentRadius, fillPaint);
         }
@@ -119,5 +121,8 @@ public class RevealBackgroundView extends View {
 
     public static interface OnStateChangeListener {
         void onStateChange(int state);
+    }
+    public int getState(){
+        return  state;
     }
 }

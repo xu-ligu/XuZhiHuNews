@@ -78,7 +78,6 @@ public class SplashActivity extends Activity {
                                 final String bytes = new String(responseBody);
                                 JSONObject jsonObject = new JSONObject(bytes);
                                 String url = jsonObject.getString("img");
-                                Log.d("23",url);
                                 HttpUtils.getImage(url, new BinaryHttpResponseHandler() {
                                     @Override
                                     public void onSuccess(int statusCode, Header[] headers, byte[] binaryData) {
@@ -98,6 +97,7 @@ public class SplashActivity extends Activity {
 
                             } catch (JSONException e) {
                                 e.printStackTrace();
+                                startAvtivity();
                             }
                         }
 
@@ -108,9 +108,9 @@ public class SplashActivity extends Activity {
                         }
                     });
                 } else {
-
-                    Toast.makeText(SplashActivity.this, "请连接到网络！", Toast.LENGTH_LONG).show();
                     startAvtivity();
+                    Toast.makeText(SplashActivity.this, "请连接到网络！", Toast.LENGTH_LONG).show();
+
                 }
 
 

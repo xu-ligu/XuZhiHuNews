@@ -4,12 +4,10 @@ package com.example.administrator.myzzhihuday.fragment;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -27,7 +25,7 @@ import com.example.administrator.myzzhihuday.model.StoriesEntity;
 import com.example.administrator.myzzhihuday.util.Constant;
 import com.example.administrator.myzzhihuday.util.HttpUtils;
 import com.example.administrator.myzzhihuday.util.PreUtils;
-import com.example.administrator.myzzhihuday.view.Kanner;
+import com.example.administrator.myzzhihuday.view.Banner;
 import com.google.gson.Gson;
 import com.loopj.android.http.TextHttpResponseHandler;
 import  com.example.administrator.myzzhihuday.activity.latestContentActivity;
@@ -40,7 +38,7 @@ public class MainFragment extends BaseFragment {
 
 
 
-    private Kanner kanner;
+    private Banner kanner;
     private Latest latest;
     private MainNewsItemAdapter mAdapter;
     private Handler handler=new Handler();
@@ -55,10 +53,10 @@ public class MainFragment extends BaseFragment {
         View view =inflater.inflate(R.layout.main_news_layout,container,false);
 
         lv_news=(ListView)view.findViewById(R.id.lv_news);
-        View header=inflater.inflate(R.layout.kanner,lv_news,false);
+        View header=inflater.inflate(R.layout.banner,lv_news,false);
 
-        kanner=(Kanner)header.findViewById(R.id.kanner);
-        kanner.setOnItemClickListener(new Kanner.OnItemClickListener() {
+        kanner=(Banner)header.findViewById(R.id.kanner);
+        kanner.setOnItemClickListener(new Banner.OnItemClickListener() {
             @Override
             public void click(View v, Latest.TopStoriesEntity entity) {
                 int[] startingLocation = new int[2];
