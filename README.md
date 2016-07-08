@@ -30,17 +30,17 @@
   [XuZhiHuNews](http://pan.baidu.com/s/1qX7J50K)
   
 ##效果图
-  ###今日热闻信息推送、横幅图片热闻滚动视图、已查看标记
-  ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/Banner.png)
+###今日热闻信息推送、横幅图片热闻滚动视图、已查看标记
+![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/Banner.png)
 
   
-  ###侧滑边栏效果
-  ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/menu.png)
+###侧滑边栏效果
+![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/menu.png)
   
-  ###文章内容展示
-  ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/late.png)
+ ###文章内容展示
+ ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/late.png)
   
-  ###夜间模式效果图
-  ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/dark.png)
+ ###夜间模式效果图
+![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/dark.png)
   
 
