@@ -15,11 +15,11 @@
   
 ##使用到的jar包
 
-  com.google.code.gson:gson:2.7
-  com.loopj.android:android-async-http:1.4.9
-  com.nostra13.universalimageloader:universal-image-loader:1.9.5
-  com.android.support:design:22.2.1
-  com.android.support:appcompat-v7:22.2.1
+   com.google.code.gson:gson:2.7
+   com.loopj.android:android-async-http:1.4.9
+   com.nostra13.universalimageloader:universal-image-loader:1.9.5
+   com.android.support:design:22.2.1
+   com.android.support:appcompat-v7:22.2.1
   
 
 ##数据接口来源
@@ -30,17 +30,17 @@
   [XuZhiHuNews](http://pan.baidu.com/s/1qX7J50K)
   
 ##效果图
-  ####今日热闻信息推送、横幅图片热闻滚动视图、已查看标记
+  ###今日热闻信息推送、横幅图片热闻滚动视图、已查看标记
   ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/Banner.png)
 
   
-  ####侧滑边栏效果
+  ###侧滑边栏效果
   ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/menu.png)
   
-  ####文章内容展示
-    ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/late.png)
+  ###文章内容展示
+  ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/late.png)
   
-  ####夜间模式效果图
-    ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/dark.png)
+  ###夜间模式效果图
+  ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/dark.png)
   
 
