@@ -5,11 +5,11 @@
 
 ##完成功能
 * 获取开始动画图片，播放动画进入主界面。
-*展示热文信息及图片，加载横幅图片滚动播放，热闻列表，热闻分类侧边栏列表。
-*点击文章信息展示
-*下拉刷新、列表底部自动更新
-*标记已读文章标题
-*日间模式夜间模式切换
+* 展示热文信息及图片，加载横幅图片滚动播放，热闻列表，热闻分类侧边栏列表。
+* 点击文章信息展示
+* 下拉刷新、列表底部自动更新
+* 标记已读文章标题
+* 日间模式夜间模式切换
 
 
   
@@ -18,7 +18,7 @@
 * com.loopj.android:android-async-http:1.4.9
 * com.nostra13.universalimageloader:universal-image-loader:1.9.5
 * com.android.support:design:22.2.1
-*com.android.support:appcompat-v7:22.2.1
+* com.android.support:appcompat-v7:22.2.1
   
 
 ##数据接口来源
