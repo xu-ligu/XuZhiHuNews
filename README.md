@@ -1,6 +1,7 @@
 # XuZhiHuNews
 学习用途（模仿知乎日报）
-实现了今日热闻信息推送，横幅图片热闻滚动视图，
+实现了今日热闻信息推送，横幅图片热闻滚动视图
+![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/Banner.png)
 
 
 
