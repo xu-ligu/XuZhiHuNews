@@ -42,5 +42,8 @@
   
 ###夜间模式效果图
 ![image](https://github.com/xu-ligu/XuZhiHuNews/raw/master/dark.png)
-  
+##开发工具
+ * androidstudio1.5
+ * gradle version 2.8
+ * jdk version 1.8
 
