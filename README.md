@@ -27,7 +27,8 @@
   非常感谢的！
   
 ##APK下载地址
-  [XuZhiHuNews](http://pan.baidu.com/s/1qX7J50K)
+* 百度云盘下载
+  [XuZhiHuNews](http://pan.baidu.com/s/1jIdJRmQ)
   
 ##效果图
 ###今日热闻信息推送、横幅图片热闻滚动视图、已查看标记
