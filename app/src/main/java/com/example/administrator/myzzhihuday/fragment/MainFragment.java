@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.design.widget.Snackbar;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -144,6 +145,9 @@ public class MainFragment extends BaseFragment {
 
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, String responseString) {
+                    if(((MainActivity)mActivity).getdbHelper()==null){
+                        Log.d("23","db 为空");
+                    }
                     SQLiteDatabase db=((MainActivity)mActivity).getdbHelper().getWritableDatabase();
                     db.execSQL("replace into Cache(date,json) values("+Constant.LATEST_COLUMN+",'"+responseString+"')");
                     db.close();

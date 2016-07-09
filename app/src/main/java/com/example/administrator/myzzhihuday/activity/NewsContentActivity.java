@@ -39,7 +39,7 @@ import cz.msebera.android.httpclient.Header;
 
 
 public class NewsContentActivity extends AppCompatActivity implements RevealBackgroundView.OnStateChangeListener{
-    private ImageLoader mImageLoader;
+
     private StoriesEntity entity;
     private WebView webView;
     private ImageView iv;
@@ -48,18 +48,18 @@ public class NewsContentActivity extends AppCompatActivity implements RevealBack
     private Content content;
     private CoordinatorLayout mcoordinatorLayout;
     private WebCacheDatabase dbHelper;
-    private boolean isLighnt;
+    private boolean isLight;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.news_content_layout);
-        isLighnt=getIntent().getBooleanExtra("isLight",true);
+        isLight=getIntent().getBooleanExtra("isLight",true);
         dbHelper=new WebCacheDatabase(this,1);
         entity=(StoriesEntity)getIntent().getSerializableExtra("entity");
         mRevealBackground=(RevealBackgroundView)findViewById(R.id.revealBackgroundView);
         toolbar=(Toolbar)findViewById(R.id.toolbar);
         toolbar.setTitle(entity.getTitle());
-        toolbar.setBackgroundColor(getResources().getColor(isLighnt?R.color.light_toolbar:R.color.dark_toolbar));
+        toolbar.setBackgroundColor(getResources().getColor(isLight?R.color.light_toolbar:R.color.dark_toolbar));
         setSupportActionBar(toolbar);
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         toolbar.setNavigationOnClickListener(new View.OnClickListener() {
@@ -107,16 +107,18 @@ public class NewsContentActivity extends AppCompatActivity implements RevealBack
             db.close();
         }
         setUpRevealBackground(savedInstanceState);
-
+        setStatusBarColor(getResources().getColor(isLight ? R.color.light_toolbar : R.color.dark_toolbar));
     }
     public void parseJson(String responseString){
         Gson gson = new Gson();
         content = gson.fromJson(responseString, Content.class);
-        String css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/news.css\" type=\"text/css\">";
+        String css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/newsLight.css\" type=\"text/css\">";
+
+        if(!isLight){
+            css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/newsBlack.css\" type=\"text/css\">";
+        }
         String html = "<html><head>" + css + "</head><body>" + content.getBody() + "</body></html>";
         html = html.replace("<div class=\"img-place-holder\">", "");
-        Log.d("23", "<body)"+content.getBody());
-        Log.d("23", "html"+html);
 
         webView.loadDataWithBaseURL("x-data://base", html, "text/html", "UTF-8", null);
     }
@@ -152,7 +154,20 @@ public class NewsContentActivity extends AppCompatActivity implements RevealBack
         overridePendingTransition(0, R.anim.slide_out_to_left);
     }
 
-
+    @TargetApi(21)
+    private void setStatusBarColor(int statusBarColor) {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+            // If both system bars are black, we can remove these from our layout,
+            // removing or shrinking the SurfaceFlinger overlay required for our views.
+            Window window = this.getWindow();
+            if (statusBarColor == Color.BLACK && window.getNavigationBarColor() == Color.BLACK) {
+                window.clearFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            } else {
+                window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS);
+            }
+            window.setStatusBarColor(statusBarColor);
+        }
+    }
 
 
 }

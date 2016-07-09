@@ -72,7 +72,7 @@ public class MenuFragment extends BaseFragment implements View.OnClickListener {
                         replace(R.id.fl_content, new NewsFragment(items.get(position).getId(), items.get(position).getTitle()),"news").commit();*/
                 getFragmentManager().popBackStack();
                 getFragmentManager().beginTransaction().setCustomAnimations(R.anim.slide_in_from_right,R.anim.slide_out_to_left).add(R.id.fl_content,
-                        new NewsFragment(items.get(position).getId(), items.get(position).getTitle()), "news").addToBackStack("0").commit();
+                        new NewsFragment(items.get(position).getId(), items.get(position).getTitle()), "news").addToBackStack("news").commit();
 
                 ((MainActivity) mActivity).setCurId(items.get(position).getId());
                 ((MainActivity) mActivity).closeMenu();

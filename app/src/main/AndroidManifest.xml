@@ -34,6 +34,7 @@
             android:theme="@style/AppTheme.TransparentActivity"></activity>
         <activity android:name=".activity.textActivity">
         </activity>
+
     </application>
 
 </manifest>

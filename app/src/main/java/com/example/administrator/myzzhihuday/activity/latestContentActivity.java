@@ -91,6 +91,7 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
                 @Override
                 public void onSuccess(int statusCode, Header[] headers, String responseString) {
                     SQLiteDatabase db=dbHelper.getWritableDatabase();
+
                     responseString=responseString.replace("'","''");
                     db.execSQL("replace into WebCache(newsId,json) values("+entity.getId()+",'"+responseString+"')");
                     db.close();
@@ -126,9 +127,13 @@ public class latestContentActivity extends AppCompatActivity implements RevealBa
                 .cacheOnDisk(true)
                 .build();
         imageloader.displayImage(content.getImage(), iv, options);
+        String css;
+         if(!isLight){
+              css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/latestBlack.css\" type=\"text/css\">";
+         }else{
+           css= "<link rel=\"stylesheet\" href=\"file:///android_asset/css/latestLight.css\" type=\"text/css\">";
+         }
 
-
-        String css = "<link rel=\"stylesheet\" href=\"file:///android_asset/css/news.css\" type=\"text/css\">";
         String html = "<html><head>" + css + "</head><body>" + content.getBody() + "</body></html>";
         html = html.replace("<div class=\"img-place-holder\">", "");
         final String finalHtml = html;

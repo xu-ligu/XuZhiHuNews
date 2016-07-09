@@ -186,8 +186,13 @@ public class MainActivity extends AppCompatActivity{
             setStatusBarColor(getResources().getColor(isLight?R.color.light_toolbar:R.color.dark_toolbar));
             if(curId.equals("latest")){
                 ((MainFragment)getSupportFragmentManager().findFragmentByTag("latest")).updateTheme();
+                //((NewsFragment)getSupportFragmentManager().findFragmentByTag("news")).updateTheme();
             }else{
-                ((NewsFragment)getSupportFragmentManager().findFragmentByTag("news")).updateTheme();
+
+                ((MainFragment)getSupportFragmentManager().findFragmentByTag("latest")).updateTheme();
+                if(((NewsFragment)getSupportFragmentManager().findFragmentByTag("news"))!=null){
+                    ((NewsFragment)getSupportFragmentManager().findFragmentByTag("news")).updateTheme();
+                }
             }
             ((MenuFragment)getSupportFragmentManager().findFragmentById(R.id.menu_fragment)).updateTheme();
             sp.edit().putBoolean("isLight",isLight).apply();
