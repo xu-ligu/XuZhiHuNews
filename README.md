@@ -20,6 +20,8 @@
 * com.nostra13.universalimageloader:universal-image-loader:1.9.5
 * com.android.support:design:22.2.1
 * com.android.support:appcompat-v7:22.2.1
+
+
 ##技术描述：
 * DrawerLayout嵌套SwipeRefreshLayout组件完成下拉刷新，嵌套FrameLayout后续装载content内容完成整体框架。
 * 图片采用第三方框架ImageLoader异步加载加快加载速度，解决OOM问题；
